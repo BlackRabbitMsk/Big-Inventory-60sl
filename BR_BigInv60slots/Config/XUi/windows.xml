@@ -77,8 +77,8 @@
 				<rect depth="1" pos="3,0" name="preview" width="180" height="100%">
 					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="183" height="100%" color="[black]" type="sliced" fillcenter="false" />
 					<sprite depth="1" color="[darkGrey]" pos="0,0" type="sliced" globalopacity="true" />
-					<sprite depth="7" name="itemPreview" width="154" height="154" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" pos="89,-160" pivot="center" foregroundlayer="true"/>
-					<sprite depth="12" name="itemtypeicon" width="36" height="36" sprite="ui_game_symbol_{itemtypeicon}" pos="8,-12" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+					<sprite depth="7" name="itemPreview" width="154" height="154" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" pos="89,-166" pivot="center" foregroundlayer="true"/>
+					
 					<sprite depth="4" name="durabilityBackground" height="32" width="171" color="20,20,20,255" type="sliced" pos="3, -308" visible="{hasdurability}"/>
 					<filledsprite depth="5" name="durabilityBar" height="32" width="171" color="{durabilitycolor}" type="filled" pos="3, -308" fill="{durabilityfill}" visible="{hasdurability}" />
 					<label depth="12" name="durabilityValue" pos="6,-309" width="162" height="32" text="{durabilitytext}" font_size="30" justify="{durabilityjustify}" effect="outline" visible="false"/>
@@ -86,6 +86,7 @@
 
 				
 				<rect pos="183,0" width="174" height="100%" visible="{shownormaloptions}" >
+					<sprite depth="12" name="itemtypeicon" width="36" height="36" sprite="ui_game_symbol_{itemtypeicon}" pos="-175,-11" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
 					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="177" height="100%" color="[black]" type="sliced" fillcenter="false" />
 					<grid name="itemActions" rows="8" cols="1" pos="0,0" width="174" height="100%" cell_width="174" cell_height="43" controller="ItemActionList"
 						repeat_content="true" visible="false">
@@ -93,15 +94,19 @@
 					</grid>
 				</rect>
 
-				<rect pos="3,-132" width="147" height="100%" visible="{showtraderoptions}" >
+				<rect pos="3,0" width="180" height="100%" visible="{showtraderoptions}" >
+					<sprite depth="12" name="itemtypeicon" width="36" height="36" sprite="ui_game_symbol_{itemtypeicon}" pos="8,-54" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
 					<sprite color="[mediumGrey]" type="sliced" height="44" />
-					<rect name="counterControl" width="120" height="42" pos="27,0" controller="Counter">
-						<button depth="2" name="countDown" style="icon30px, press, held" pos="-10,-20" sprite="ui_game_symbol_arrow_left" pivot="center" sound="[paging_click]"/>
-						<textfield name="count_input" depth="2" pos="7,-6" width="40" height="28" character_limit="4" validation="integer" virtual_keyboard_prompt="vkPromptCount" />
-						<button depth="2" name="countUp" style="icon30px, press, held" pos="64,-20" sprite="ui_game_symbol_arrow_right" pivot="center" sound="[paging_click]"/>
-						<button depth="2" name="countMax" style="icon30px, press" pos="96,-20" sprite="ui_game_symbol_arrow_max" pivot="center" sound="[paging_click]"/>
+					<rect name="counterControl" width="180" height="43" pos="0,0" controller="RecipeCraftCount">
+						<sprite depth="1" color="[darkestGrey]" type="sliced" globalopacity="true" width="180" height="43" />
+						<button depth="2" name="countDown" style="icon30px, press, held" pos="17,-23" sprite="ui_game_symbol_arrow_left" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountdown}"/>
+						<textfield name="count_input" depth="2" pos="38,-9" width="62" height="27" character_limit="4" validation="integer" virtual_keyboard_prompt="vkPromptCount" />
+						<button depth="2" name="countUp" style="icon30px, press, held" pos="121,-23" sprite="ui_game_symbol_arrow_right" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountup}"/>
+						<button depth="2" name="countMax" style="icon30px, press" pos="157,-24" sprite="ui_game_symbol_arrow_max" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountup}"/>
 					</rect>
-					<grid name="vendorItemActions" rows="4" cols="1" pos="0,-43" width="147" height="100%" cell_width="147" cell_height="42" controller="ItemActionList"
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="177,0" width="177" height="348" color="[black]" type="sliced" fillcenter="false" />
+					<sprite depth="3" name="fillerBackground" pos="180,-45" height="303" width="174" color="[mediumGrey]" type="sliced"/>
+					<grid name="vendorItemActions" rows="1" cols="1" pos="180,-3" width="174" height="100%" cell_width="174" cell_height="42" controller="ItemActionList"
 						repeat_content="true" visible="false">
 						<item_action_entry />
 					</grid>
@@ -110,6 +115,7 @@
 				<!-- <sprite depth="3" name="fillerBackground" pos="3,-343" height="15" width="147" color="[mediumGrey]" type="sliced"/> -->
 
 			<rect depth="2" name="searchControls" width="448" height="43" pos="357,0" visible="{showstatanddescription}">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="453" height="46" color="[black]" type="sliced" fillcenter="false" />
 				<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" width="449" height="44" />
 				<button depth="4" name="statButton" style="icon30px, press" pos="22,-22" sprite="ui_game_symbol_ping" pivot="center" tooltip="Stats" tooltip_key="lblStats" sound="[paging_click]" selected="true" />
 				<button depth="4" name="descriptionButton" style="icon30px, press" pos="65,-22" sprite="ui_game_symbol_book" pivot="center" tooltip="Description" tooltip_key="lblDescription" sound="[paging_click]" />
@@ -332,6 +338,8 @@
 				</rect>
 			</rect>
 	</window>
+		
+		
 		
 	</insertAfter>
 	
